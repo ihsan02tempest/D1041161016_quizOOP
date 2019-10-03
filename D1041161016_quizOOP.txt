@@ -1,0 +1,174 @@
+1. Modifier (min. 3)
+  - public static final int TEXT_REQUEST = 1;
+  
+  - protected void onCreate(Bundle savedInstanceState) 
+  
+  - private TextView mReplyHeadTextView;
+  
+2. Method (min. 4)
+  - name.setText("Hallo " + message);
+  
+  - result.setText(String.valueOf(angka));
+  
+  - protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        text_inputNama = findViewById(R.id.text_Nama);
+    }
+    
+  - result.setText(String.valueOf(angka));
+
+3. Class (min. 2)
+  - public class MainActivity extends AppCompatActivity {
+
+      EditText text_inputNama;
+
+      public static final String EXTRA_MESSAGE =
+              "com.example.android.d1041161016_tugastoastactiv.extra.MESSAGE";
+
+      public static final int TEXT_REQUEST = 1;
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_main);
+          text_inputNama = findViewById(R.id.text_Nama);
+      }
+
+      public void launchSecondActivity(View view) {
+          String message = text_inputNama.getText().toString();
+          Intent intent = new Intent(this, SecondActivity.class);
+          message = text_inputNama.getText().toString();
+          intent.putExtra(EXTRA_MESSAGE, message);
+          startActivityForResult(intent, TEXT_REQUEST);
+      }
+    }
+  
+  - public class SecondActivity extends AppCompatActivity {
+      Button btn1,btn2;
+      TextView result,name;
+      int angka;
+      String message;
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_second);
+          Intent intent = getIntent();
+          message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+          name = findViewById(R.id.nama);
+          name.setText("Hallo " + message);
+
+
+          btn1=findViewById(R.id.btnup);
+          btn2=findViewById(R.id.btndown);
+          result=findViewById(R.id.hasil);
+          angka=16;
+
+          btn1.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  angka=angka+1;
+                  result.setText(String.valueOf(angka));
+              }
+          });
+
+          btn2.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  angka=angka-1;
+                  result.setText(String.valueOf(angka));
+              }
+          });
+
+      }
+    }
+
+4. Function (min. 3)
+  - btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                angka=angka+1;
+                result.setText(String.valueOf(angka));
+            }
+        });
+  
+  - btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                angka=angka-1;
+                result.setText(String.valueOf(angka));
+            }
+        });
+  
+  - CountUp++;
+  
+5. Constructor (min. 2)
+  - int angka;
+    angka=16;
+  
+  - String message;
+    name.setText("Hallo " + message);
+  
+6. Polimorfisme (min. 3)
+  - @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        Intent intent = getIntent();
+        message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        name = findViewById(R.id.nama);
+        name.setText("Hallo " + message);
+
+
+        btn1=findViewById(R.id.btnup);
+        btn2=findViewById(R.id.btndown);
+        result=findViewById(R.id.hasil);
+        angka=16;
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                angka=angka+1;
+                result.setText(String.valueOf(angka));
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                angka=angka-1;
+                result.setText(String.valueOf(angka));
+            }
+        });
+
+    }
+  
+  - @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        text_inputNama = findViewById(R.id.text_Nama);
+    }
+  
+  - @Override
+    public void onActivityResult(int requestCode,
+                                 int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == TEXT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                String reply =
+                        data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(reply);
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+  
+7. Inheritance (min. 3)
+  - public class SecondActivity extends AppCompatActivity {
+  
+  - public class MainActivity extends AppCompatActivity {
+  
+  - super.onCreate(savedInstanceState);
